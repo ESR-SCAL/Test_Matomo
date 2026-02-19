@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Matomo - Accueil</title>
+  <link rel="stylesheet" href="style.css">
+
+ <script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://testesr.matomo.cloud/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://cdn.matomo.cloud/testesr.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script> 
+  
+</head>
+
+<body>
+  <h1>Site de Test Matomo</h1>
+
+  <p>Bienvenue sur la page d'accueil.</p>
+
+  <button onclick="trackEvent()">Tester un événement</button>
+
+  <br><br>
+
+  <a href="page2.html">Aller à la page 2</a>
+
+  <script>
+    function trackEvent() {
+      _paq.push(['trackEvent', 'Test', 'Click', 'Bouton Accueil']);
+      alert("Événement envoyé à Matomo !");
+    }
+  </script>
+
+</body>
+</html>
