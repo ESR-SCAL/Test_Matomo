@@ -57,25 +57,33 @@ function randomVisitorId() {
   return 'user_' + Math.random().toString(36).substring(2, 10);
 }
 
-function simulateRealVisitor() {
-  // 👤 nouvel utilisateur unique
-  const userId = randomVisitorId();
+function burstTraffic() {
+  if (typeof _paq === 'undefined') {
+    alert('Matomo non chargé');
+    return;
+  }
 
-  _paq.push(['resetUserId']);
-  _paq.push(['setUserId', userId]);
+  document.getElementById('status').innerText =
+    "Statut : simulation réaliste…";
 
-  // 🎲 action aléatoire
-  const actions = [
-    () => _paq.push(['trackPageView']),
-    () => _paq.push(['trackEvent', 'Test', 'Click', 'Bouton']),
-    () => _paq.push(['trackSiteSearch', 'produit test', false, 1]),
-    () => _paq.push(['trackGoal', 1])
-  ];
+  let count = 0;
 
-  const action = actions[Math.floor(Math.random() * actions.length)];
-  action();
+  const burst = setInterval(() => {
+    const userId = 'user_' + Math.random().toString(36).substring(2, 10);
+
+    _paq.push(['appendToTrackingUrl', 'new_visit=1']);
+    _paq.push(['setUserId', userId]);
+    _paq.push(['trackPageView']);
+
+    count++;
+
+    if (count >= 100) {
+      clearInterval(burst);
+      document.getElementById('status').innerText =
+        "Statut : 100 visiteurs simulés ✅";
+    }
+  }, 100);
 }
-</script>
 
 </body>
 </html>
