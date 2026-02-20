@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Test Matomo - Accueil</title>
   <link rel="stylesheet" href="style.css">
-
- <script>
+<!-- Matomo -->
+<script>
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   _paq.push(['trackPageView']);
@@ -13,13 +13,13 @@
   (function() {
     var u="https://testesr.matomo.cloud/";
     _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '2']);
+    _paq.push(['setSiteId', '4']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.async=true; g.src='https://cdn.matomo.cloud/testesr.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
   })();
-</script> 
-  
-</head>
+</script>
+<!-- End Matomo Code -->
+ </head>
 
 <body>
   <h1>Site de Test Matomo</h1>
@@ -41,3 +41,4 @@
 
 </body>
 </html>
+
