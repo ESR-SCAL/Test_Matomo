@@ -71,24 +71,6 @@ function randomVisitorId() {
   return 'user_' + Math.random().toString(36).substring(2, 10);
 }
 
-function burstTraffic() {
-  document.getElementById('status').innerText =
-    "Statut : simulation réaliste…";
-
-  let count = 0;
-
-  const burst = setInterval(() => {
-    simulateRealVisitor();
-    count++;
-
-    if (count >= 100) {
-      clearInterval(burst);
-      document.getElementById('status').innerText =
-        "Statut : 100 visiteurs simulés ✅";
-    }
-  }, 80); // rythme humain
-}
-
 function simulateRealVisitor() {
   // 👤 nouvel utilisateur unique
   const userId = randomVisitorId();
