@@ -69,22 +69,45 @@ function stopTraffic() {
   clearInterval(interval);
   document.getElementById('status').innerText = "Statut : arrêté";
 }
+function randomVisitorId() {
+  return 'user_' + Math.random().toString(36).substring(2, 10);
+}
+
 function burstTraffic() {
   document.getElementById('status').innerText =
-    "Statut : envoi de 100 visiteurs…";
+    "Statut : simulation réaliste…";
 
   let count = 0;
 
   const burst = setInterval(() => {
-    randomAction();
+    simulateRealVisitor();
     count++;
 
     if (count >= 100) {
       clearInterval(burst);
       document.getElementById('status').innerText =
-        "Statut : pic de trafic terminé";
+        "Statut : 100 visiteurs simulés ✅";
     }
-  }, 50); // vitesse du burst
+  }, 80); // rythme humain
+}
+
+function simulateRealVisitor() {
+  // 👤 nouvel utilisateur unique
+  const userId = randomVisitorId();
+
+  _paq.push(['resetUserId']);
+  _paq.push(['setUserId', userId]);
+
+  // 🎲 action aléatoire
+  const actions = [
+    () => _paq.push(['trackPageView']),
+    () => _paq.push(['trackEvent', 'Test', 'Click', 'Bouton']),
+    () => _paq.push(['trackSiteSearch', 'produit test', false, 1]),
+    () => _paq.push(['trackGoal', 1])
+  ];
+
+  const action = actions[Math.floor(Math.random() * actions.length)];
+  action();
 }
 </script>
 
