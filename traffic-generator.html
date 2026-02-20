@@ -16,18 +16,7 @@
     g.async=true; g.src='https://cdn.matomo.cloud/testesr.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
-<script>
-var _paq = window._paq = window._paq || [];
-_paq.push(['trackPageView']);
-_paq.push(['enableLinkTracking']);
-(function() {
-  var u="https://TONCOMPTE.matomo.cloud/"; // ← remplace
-  _paq.push(['setTrackerUrl', u+'matomo.php']);
-  _paq.push(['setSiteId', '1']); // ← remplace
-  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-  g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-})();
-</script>
+ 
 
 </head>
 <body style="font-family: Arial; text-align:center; margin-top:50px;">
@@ -36,7 +25,6 @@ _paq.push(['enableLinkTracking']);
 
 <button onclick="startTraffic()">Démarrer</button>
 <button onclick="stopTraffic()">Arrêter</button>
-<button onclick="burstTraffic()"> 100 visiteurs d’un coup</button>
 <p id="status">Statut : arrêté</p>
 <a href="index.html">Retour à l'accueil</a>
 
