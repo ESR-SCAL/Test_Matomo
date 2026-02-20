@@ -57,33 +57,5 @@ function randomVisitorId() {
   return 'user_' + Math.random().toString(36).substring(2, 10);
 }
 
-function burstTraffic() {
-  if (typeof _paq === 'undefined') {
-    alert('Matomo non chargé');
-    return;
-  }
-
-  document.getElementById('status').innerText =
-    "Statut : simulation réaliste…";
-
-  let count = 0;
-
-  const burst = setInterval(() => {
-    const userId = 'user_' + Math.random().toString(36).substring(2, 10);
-
-    _paq.push(['appendToTrackingUrl', 'new_visit=1']);
-    _paq.push(['setUserId', userId]);
-    _paq.push(['trackPageView']);
-
-    count++;
-
-    if (count >= 100) {
-      clearInterval(burst);
-      document.getElementById('status').innerText =
-        "Statut : 100 visiteurs simulés ✅";
-    }
-  }, 100);
-}
-
 </body>
 </html>
