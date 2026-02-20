@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Générateur de trafic</title>
+
+<!-- 👉 COLLE ICI TON SCRIPT MATOMO CLOUD -->
+<script>
+var _paq = window._paq = window._paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+  var u="https://TONCOMPTE.matomo.cloud/"; // ← remplace
+  _paq.push(['setTrackerUrl', u+'matomo.php']);
+  _paq.push(['setSiteId', '1']); // ← remplace
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+})();
+</script>
+
+</head>
+<body style="font-family: Arial; text-align:center; margin-top:50px;">
+
+<h1>🚀 Générateur de trafic Matomo</h1>
+
+<button onclick="startTraffic()">Démarrer</button>
+<button onclick="stopTraffic()">Arrêter</button>
+
+<p id="status">Statut : arrêté</p>
+
+<script>
+let interval;
+
+function randomAction() {
+  const actions = [
+    () => _paq.push(['trackPageView']),
+    () => _paq.push(['trackEvent', 'Test', 'Click', 'Bouton']),
+    () => _paq.push(['trackSiteSearch', 'test produit', false, 1]),
+    () => _paq.push(['trackGoal', 1])
+  ];
+
+  const action = actions[Math.floor(Math.random() * actions.length)];
+  action();
+
+  console.log("Action envoyée à Matomo");
+}
+
+function startTraffic() {
+  document.getElementById('status').innerText = "Statut : en cours…";
+
+  interval = setInterval(() => {
+    randomAction();
+  }, 2000); // toutes les 2 secondes
+}
+
+function stopTraffic() {
+  clearInterval(interval);
+  document.getElementById('status').innerText = "Statut : arrêté";
+}
+</script>
+
+</body>
+</html>
