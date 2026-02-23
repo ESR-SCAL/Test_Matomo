@@ -25,11 +25,12 @@
 
 <button onclick="startTraffic()">Démarrer</button>
 <button onclick="stopTraffic()">Arrêter</button>
-<button onclick="burstTraffic()">💥 100 visiteurs d’un coup</button>
+
 <p id="status">Statut : arrêté</p>
-<a href="index.html">Retour à l'accueil</a>
 
 <script>
+let interval;
+
 function randomAction() {
   const actions = [
     () => _paq.push(['trackPageView']),
@@ -56,26 +57,8 @@ function stopTraffic() {
   clearInterval(interval);
   document.getElementById('status').innerText = "Statut : arrêté";
 }
-function randomVisitorId() {
-  return 'user_' + Math.random().toString(36).substring(2, 10);
-}
-function burstTraffic() {
-  document.getElementById('status').innerText =
-    "Statut : envoi de 100 visiteurs…";
-
-  let count = 0;
-
-  const burst = setInterval(() => {
-    randomAction();
-    count++;
-
-    if (count >= 100) {
-      clearInterval(burst);
-      document.getElementById('status').innerText =
-        "Statut : pic de trafic terminé";
-    }
-  }, 50); // vitesse du burst
-}
+</script>
 
 </body>
+</html>/body>
 </html>
