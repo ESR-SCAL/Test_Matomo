@@ -38,8 +38,82 @@
       alert("Événement envoyé à Matomo !");
     }
   </script>
+  
+<h2>Tests Matomo</h2>
 
+<button onclick="startTraffic()">🚀 Démarrer trafic</button>
+<button onclick="stopTraffic()">🛑 Arrêter</button>
+<button onclick="burstTraffic()">💥 100 visiteurs</button>
+
+<p id="status">Statut : arrêté</p>
+
+<script>
+let interval;
+
+function randomVisitorId() {
+  return 'user_' + Math.random().toString(36).substring(2, 10);
+}
+
+function simulateVisitor() {
+  if (typeof _paq === 'undefined') {
+    console.log("Matomo non chargé");
+    return;
+  }
+
+  const userId = randomVisitorId();
+
+  _paq.push(['appendToTrackingUrl', 'new_visit=1']);
+  _paq.push(['setUserId', userId]);
+
+  const actions = [
+    () => _paq.push(['trackPageView']),
+    () => _paq.push(['trackEvent', 'Test', 'Click', 'Bouton']),
+    () => _paq.push(['trackSiteSearch', 'produit test', false, 1]),
+    () => _paq.push(['trackGoal', 1])
+  ];
+
+  const action = actions[Math.floor(Math.random() * actions.length)];
+  action();
+}
+
+function startTraffic() {
+  document.getElementById('status').innerText = "Statut : trafic en cours…";
+
+  interval = setInterval(() => {
+    simulateVisitor();
+  }, 2000);
+}
+
+function stopTraffic() {
+  clearInterval(interval);
+  document.getElementById('status').innerText = "Statut : arrêté";
+}
+
+function burstTraffic() {
+  document.getElementById('status').innerText =
+    "Statut : simulation 100 visiteurs…";
+
+  let count = 0;
+
+  const burst = setInterval(() => {
+    simulateVisitor();
+    count++;
+
+    if (count >= 100) {
+      clearInterval(burst);
+      document.getElementById('status').innerText =
+        "Statut : 100 visiteurs simulés ✅";
+    }
+  }, 80);
+}
+</script>
+
+
+
+
+  
 </body>
 </html>
+
 
 
