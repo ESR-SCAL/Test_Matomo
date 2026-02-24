@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Contact Premium</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Contact Premium</h1>
+
+<div class="container">
+
+  <img src="https://picsum.photos/800/400" alt="Photo illustrative" class="hero-img">
+
+  <h2>Demande d'information</h2>
+
+  <form id="premiumForm">
+    <div>
+      <label>Nom</label><br>
+      <input type="text" required>
+    </div>
+
+    <div>
+      <label>Email</label><br>
+      <input type="email" required>
+    </div>
+
+    <div>
+      <label>Votre message</label><br>
+      <textarea rows="4" required></textarea>
+    </div>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <p id="status"></p>
+
+  <br>
+  <a href="index.html">⬅ Retour à l'accueil</a>
+
+</div>
+
+<script>
+document.getElementById("premiumForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  document.getElementById("status").innerText =
+    "✅ Message envoyé avec succès !";
+  this.reset();
+});
+</script>
+
+</body>
+</html>
