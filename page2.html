@@ -19,9 +19,12 @@
 </script>
 </head>
 <body>
- <h1>Nos Produits</h1>
+<h1>Nos Produits</h1>
 
 <div class="container">
+
+  <!-- 🖼️ Photo -->
+  <img src="https://picsum.photos/900/350" alt="Nos produits" class="hero-img">
 
   <h2>Demander un devis</h2>
 
@@ -71,14 +74,14 @@
 <script>
 document.getElementById("quoteForm").addEventListener("submit", function(e) {
   e.preventDefault();
-
   document.getElementById("status").innerText =
     "✅ Votre demande de devis a été envoyée (simulation).";
-
   this.reset();
 });
 </script>
+</body>
 </html>
+
 
 
 
