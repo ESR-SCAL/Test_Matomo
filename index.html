@@ -27,25 +27,12 @@
   <p>Bienvenue sur la page d'accueil.</p>
 
   <button onclick="trackEvent()">Tester un événement</button>
-  <script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  if (typeof _paq !== 'undefined') {
-    // 🎯 Envoi comme objectif
-    _paq.push(['trackGoal', 1]);
-
-    // 📊 Event personnalisé
-    _paq.push(['trackEvent', 'Formulaire', 'Envoi', 'Contact Page 1']);
-  }
-
-  document.getElementById("formStatus").innerText =
-    "✅ Message envoyé (simulation)";
-    
-  // reset formulaire
-  this.reset();
-});
-</script>
+   <script>
+    function trackEvent() {
+      _paq.push(['trackEvent', 'Test', 'Click', 'Bouton Accueil']);
+      alert("Événement envoyé à Matomo !");
+    }
+  </script>
 
   <br><br>
 
@@ -122,6 +109,7 @@ function burstTraffic() {
 </script>
 </body>
 </html>
+
 
 
 
