@@ -31,7 +31,28 @@
   <br><br>
 
   <a href="page2.html">Aller à la page 2</a>
+<h2>Contactez-nous</h2>
 
+<form id="contactForm">
+  <div>
+    <label>Nom</label><br>
+    <input type="text" id="name" required>
+  </div>
+  <br>
+  <div>
+    <label>Email</label><br>
+    <input type="email" id="email" required>
+  </div>
+  <br>
+  <div>
+    <label>Message</label><br>
+    <textarea id="message" rows="4" required></textarea>
+  </div>
+  <br>
+  <button type="submit">Envoyer</button>
+</form>
+
+<p id="formStatus"></p>
   <script>
     function trackEvent() {
       _paq.push(['trackEvent', 'Test', 'Click', 'Bouton Accueil']);
@@ -108,12 +129,31 @@ function burstTraffic() {
 }
 </script>
 
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
+  if (typeof _paq !== 'undefined') {
+    // 🎯 Envoi comme objectif
+    _paq.push(['trackGoal', 1]);
+
+    // 📊 Event personnalisé
+    _paq.push(['trackEvent', 'Formulaire', 'Envoi', 'Contact Page 1']);
+  }
+
+  document.getElementById("formStatus").innerText =
+    "✅ Message envoyé (simulation)";
+    
+  // reset formulaire
+  this.reset();
+});
+</script>
 
 
   
 </body>
 </html>
+
 
 
 
