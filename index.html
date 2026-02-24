@@ -101,10 +101,29 @@ function burstTraffic() {
   }, 80);
 }
 </script>
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
+  if (typeof _paq !== 'undefined') {
+    // 🎯 Envoi comme objectif
+    _paq.push(['trackGoal', 1]);
+
+    // 📊 Event personnalisé
+    _paq.push(['trackEvent', 'Formulaire', 'Envoi', 'Contact Page 1']);
+  }
+
+  document.getElementById("formStatus").innerText =
+    "✅ Message envoyé (simulation)";
+    
+  // reset formulaire
+  this.reset();
+});
+</script>
 
 </body>
 </html>
+
 
 
 
