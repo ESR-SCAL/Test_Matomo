@@ -77,11 +77,13 @@ document.getElementById("quoteForm").addEventListener("submit", function(e) {
   e.preventDefault();
   document.getElementById("status").innerText =
     "✅ Votre demande de devis a été envoyée (simulation).";
+  _paq.push(['trackEvent', 'Formulaire', 'Envoi']);
   this.reset();
 });
 </script>
 </body>
 </html>
+
 
 
 
