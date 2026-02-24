@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Test Matomo - Page 2</title>
+  <title>Test Matomo - Nos produits</title>
   <link rel="stylesheet" href="style.css">
 <script>
   var _paq = window._paq = window._paq || [];
@@ -19,17 +19,66 @@
 </script>
 </head>
 <body>
-  <h1>Page 2</h1>
-  <p>Cette page permet de tester le suivi des pages vues.</p>
-<h2>Contact</h2>
-<form onsubmit="trackForm(event)">
-  <input type="text" placeholder="Nom" required>
-  <input type="email" placeholder="Email" required>
-  <button type="submit">Envoyer</button>
-</form>
-  <a href="index.html">Retour à l'accueil</a>
-<a href="traffic-generator.html">🚀 Générateur de trafic</a>
-</body>
+ <h1>Nos Produits</h1>
+
+<div class="container">
+
+  <h2>Demander un devis</h2>
+
+  <form id="quoteForm">
+
+    <div>
+      <label>Votre nom</label><br>
+      <input type="text" required>
+    </div>
+
+    <div>
+      <label>Email</label><br>
+      <input type="email" required>
+    </div>
+
+    <div>
+      <label>Produit souhaité</label><br>
+      <select required>
+        <option value="">-- Sélectionnez un produit --</option>
+        <option>Produit A</option>
+        <option>Produit B</option>
+        <option>Produit Premium</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Quantité</label><br>
+      <input type="number" min="1" value="1" required>
+    </div>
+
+    <div>
+      <label>Message (optionnel)</label><br>
+      <textarea rows="4"></textarea>
+    </div>
+
+    <button type="submit">📩 Demander un devis</button>
+
+  </form>
+
+  <p id="status"></p>
+
+  <br>
+  <a href="index.html">⬅ Retour à l'accueil</a>
+
+</div>
+
+<script>
+document.getElementById("quoteForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  document.getElementById("status").innerText =
+    "✅ Votre demande de devis a été envoyée (simulation).";
+
+  this.reset();
+});
+</script>
 </html>
+
 
 
